@@ -1,0 +1,20 @@
+{
+  "name": "adopt-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reubsinit/fem-react-adopt-me.git"
+  },
+  "keywords": [],
+  "author": "Brian Holt & Reuben Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reubsinit/fem-react-adopt-me/issues"
+  },
+  "homepage": "https://github.com/reubsinit/fem-react-adopt-me#readme",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
