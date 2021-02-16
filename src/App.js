@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { render } from 'react-dom';
 import { Link, Router } from '@reach/router';
 import SearchParams from './SearchParams';
-import Details from './Details';
 import ThemeContext from './ThemeContext';
 import NavBar from '../NavBar';
+
+// lazy load the details component
+const Details = lazy(() => import('./Details'));
 
 const App = () => {
   const themeHook = useState('darkblue');
 
   return (
-    <React.StrictMode>
-      <ThemeContext.Provider value={themeHook}>
-        <div>
-          <NavBar>
-            <Link to="/">Adopt Me!</Link>
-          </NavBar>
+    <ThemeContext.Provider value={themeHook}>
+      <div>
+        <NavBar>
+          <Link to="/">Adopt Me!</Link>
+        </NavBar>
+        <Suspense fallback={<h1>lazy loading...</h1>}>
           <Router>
             <SearchParams path="/" />
             <Details path="/details/:id" />
           </Router>
-        </div>
-      </ThemeContext.Provider>
-    </React.StrictMode>
+        </Suspense>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 render(<App />, document.getElementById('root'));
